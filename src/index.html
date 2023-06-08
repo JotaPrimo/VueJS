@@ -28,26 +28,25 @@
 </head>
 
 <body>
-
-    <div id="app">      
-        <!-- v-bind é para atributos de classes html-->
-        {{ 2 + 2 }} <br><br>
-        tamanho do texot {{ msg.length }}<br><br>
-        <!--ternario-->
-        <input type="text" :class="teste ? 'green' : estilo" :value="msg">
+    <!-- sintaxe suggar de v-on: use @ -->
+    <div id="app">   
+        <input type="text" @:keyup="imprimirTexto()"> 
+        <button @:click="msgAlerta()">Alert</button>  
     </div>
 
     <script>
         let options = {
 
             el: '#app',
-            data: {
-                msg: 'minha sdasdasdasd mensagem',
-                estilo: 'azul',
-                teste: false
+            data: {               
             },
             methods: {
-
+                imprimirTexto() {
+                    console.log('teste');
+                },
+                msgAlerta() {
+                    alert('MSG alert');
+                }
             }
         }
 
