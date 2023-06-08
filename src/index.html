@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Básico</title>
-    <link href="/dist/output.css" rel="stylesheet">
+    <link href="/dist/output.css" rel="stylesheet" />
     <script src="js/vue.js"></script>
     <style>
         .vermelho {
@@ -50,29 +50,49 @@
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
     <div id="app">
-        <div class="bg-gray-800 uppercase underline">tailwnd</div>
-        <button @click="setarBorda()">Adicionar Borda</button>
-        <div class="borda div-principal" :class="cor">Cor: {{ cor }}</div>
+        <a class="bg-green-300 p-4 m-4" href="https://github.com/" target="_"
+            @click.prevent="previnirComportamentopadrao($event)">
+            Link
+        </a>
+        MSG {{ msg }}
         <hr />
-        <div class="div borda div-comum" @click="mudarCor('verde')"></div>
+        <br />
+        <br />
+        <button @click.once="countCliques()" class="bg-teal-400 p-5">
+            Contandor
+        </button>
+        <p>Cliques: {{ cliques }}</p>
 
-        <div @mouseout="mudarCor('vermelho')" @mouseover="mudarCor('azul')" class="div borda div-comum"></div>
-        <div @mousemove="coordenadas($event)" class="div borda div-comum"></div>
+        <hr />
+        <br />
+        <form 
+            @submit.prevent.once="prevenirUmaVez()" 
+            method="get">
+            <button type="submit">Salvar</button>
+        </form>
     </div>
 
     <script>
         let options = {
             el: "#app",
             data: {
-                cor: "branco",
+                msg: "",
+                cliques: 0,
+                formulario: ''
             },
 
             methods: {
-                mudarCor(c) {
-                    this.cor = c;
+                previnirComportamentopadrao(e) {
+                    e.preventDefault();
+                    this.msg = "Comportamento padrao ativado";
                 },
-                coordenadas(event) {
-                    console.log(event)
+
+                countCliques() {
+                    this.cliques++;
+                },
+
+                prevenirUmaVez() {
+                    this.formulario = 'Previnindo default'
                 }
             },
         };
