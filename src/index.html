@@ -48,61 +48,52 @@
 
 <body>
 
-    <button type="button" class="btn-default">Default</button>
-    <button type="button" class="btn-alternative">Alternative</button>
-    <button type="button" class="btn-dark">Dark</button>
-    <button type="button" class="btn-light">Light</button>
-    <button type="button" class="btn-green">Green</button>
-    <button type="button" class="btn-red">Red</button>
-    <button type="button" class="btn-yellow">Yellow</button>
-    <button type="button" class="btn-purple">Purple</button>
-
-    <br>
-    <br>
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
     <div id="app">
-        <a class="bg-green-300 p-4 m-4" href="https://github.com/" target="_"
-            @click.prevent="previnirComportamentopadrao($event)">
-            Link
-        </a>
-        MSG {{ msg }}
-        <hr />
-        <br />
-        <br />
-        <button @click.once="countCliques()" class="bg-teal-400 p-5">
-            Contandor
-        </button>
-        <p>Cliques: {{ cliques }}</p>
 
-        <hr />
-        <br />
-        <form @submit.prevent.once="prevenirUmaVez()" method="get">
-            <button type="submit">Salvar</button>
-        </form>
+
+        <!-- aprendendeo v-if else-->
+        <label for="idade">Idade</label>
+        <input @blur="setIdade()" type="number" id="inputIdade"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus: ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        {{ idade }}
+
+        <p v-if="idade > 18">Maior</p>
+        <p v-else>Menor</p>
+
+        <label for="Nota">Nota</label>
+        <input 
+            class="border bg-slate-100" 
+            placeholder="Nota"
+             @blur="setNota()" 
+             type="text" 
+             id="inputNota">
+        
+        <p v-if="nota == '' ">Informe a nota</p>
+        <p v-else-if="nota >= 7 && nota <= 10">Aprovado</p>
+        <p v-else-if="nota >= 0 && nota <= 7">Reprovado</p>
+        <p v-else="">Nota invalida</p>
+    
+    
     </div>
 
     <script>
         let options = {
             el: "#app",
             data: {
-                msg: "",
-                cliques: 0,
-                formulario: ''
+                idade: 0,
+                nota: 0,
             },
 
             methods: {
-                previnirComportamentopadrao(e) {
-                    e.preventDefault();
-                    this.msg = "Comportamento padrao ativado";
+                setIdade() {
+                    this.idade = inputIdade.value
+                    console.log(inputIdade.value);
                 },
-
-                countCliques() {
-                    this.cliques++;
-                },
-
-                prevenirUmaVez() {
-                    this.formulario = 'Previnindo default'
+                setNota() {
+                    console.log(inputNota.value)
+                    this.nota = inputNota.value;
                 }
             },
         };
