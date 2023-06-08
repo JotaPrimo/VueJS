@@ -47,6 +47,18 @@
 </head>
 
 <body>
+
+    <button type="button" class="btn-default">Default</button>
+    <button type="button" class="btn-alternative">Alternative</button>
+    <button type="button" class="btn-dark">Dark</button>
+    <button type="button" class="btn-light">Light</button>
+    <button type="button" class="btn-green">Green</button>
+    <button type="button" class="btn-red">Red</button>
+    <button type="button" class="btn-yellow">Yellow</button>
+    <button type="button" class="btn-purple">Purple</button>
+
+    <br>
+    <br>
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
     <div id="app">
@@ -65,9 +77,7 @@
 
         <hr />
         <br />
-        <form 
-            @submit.prevent.once="prevenirUmaVez()" 
-            method="get">
+        <form @submit.prevent.once="prevenirUmaVez()" method="get">
             <button type="submit">Salvar</button>
         </form>
     </div>
