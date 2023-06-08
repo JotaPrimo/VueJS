@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Básico</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- div pai contendo todos os elementos -->
+    <div id="app">
+        mensagem {{ mensagem }} <br>
+        <hr>
+        Valor total: {{ valorTotal}} <br>
+        <hr>
+        Bool: {{ logado }} <br>
+        <hr>
+        hobbies: {{ hobbies[1] }} <br>
+        <hr>
+        perfil Nome: {{ perfil.nome }} <br>
+        perfil idade: {{ perfil.idade }} <br>
+        perfil cursos: {{ perfil.cursos[0].nome }} {{ perfil.cursos[0].cargaHoraria }}
+
+    </div>
+
+    <script>
+        let options = {
+            // # para selecionar via id
+            // . para via classe        
+            el: '#app', // elemento que o vue vai selecionar e usar, elemento pai
+            data: {
+                // data guarda atributos reativos
+                // só posso usar essas variveis se estiverem no data
+                mensagem: 'Hello World Vue', // string
+                valorTotal: 1587,
+                logado: false,
+                hobbies: [
+                    'Dormir', 'Ler', 'Correr'
+                ],
+                perfil: {
+                    nome: 'Jota Santos',
+                    idade: 28,
+                    cursos: [
+                        {
+                            nome: 'Laravel',
+                            cargaHoraria: 30
+                        },
+                        {
+                            nome: 'Bancos de dados',
+                            cargaHoraria: 40
+                        },
+                        {
+                            nome: 'Vue',
+                            cargaHoraria: 50
+                        },
+                    ]
+                }
+            }
+        }
+
+        const vm = new Vue(options);
+
+    </script>
+</body>
+
+</html>
