@@ -30,19 +30,22 @@
 <body>
     <!-- sintaxe suggar de v-on: use @ -->
     <div id="app">   
-        <input type="text" @:keyup="imprimirTexto()"> 
-        <button @:click="msgAlerta()">Alert</button>  
+        <input type="text" @keyup="imprimirTexto('Teste', 1, opt)"> 
+        <button @click="msgAlerta()">Alert</button>  
     </div>
 
     <script>
         let options = {
 
             el: '#app',
-            data: {               
+            data: {   
+                opt: true            
             },
             methods: {
-                imprimirTexto() {
-                    console.log('teste');
+                imprimirTexto(t, n, opt) {
+                    console.log(t);
+                    console.log(n);
+                    console.log(opt)
                 },
                 msgAlerta() {
                     alert('MSG alert');
