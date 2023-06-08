@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Básico</title>
+    <link href="/dist/output.css" rel="stylesheet">
     <script src="js/vue.js"></script>
     <style>
         .vermelho {
@@ -49,6 +50,7 @@
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
     <div id="app">
+        <div class="bg-gray-800 uppercase underline">tailwnd</div>
         <button @click="setarBorda()">Adicionar Borda</button>
         <div class="borda div-principal" :class="cor">Cor: {{ cor }}</div>
         <hr />
