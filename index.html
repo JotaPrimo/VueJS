@@ -12,18 +12,13 @@
 <body>
     <!-- div pai contendo todos os elementos -->
     <div id="app">
-        mensagem {{ mensagem }} <br>
+        Somar: {{ somar() }} <br>
         <hr>
-        Valor total: {{ valorTotal}} <br>
+        subtrair: {{ subtrair() }}
         <hr>
-        Bool: {{ logado }} <br>
+        multiplicar: {{ multiplicar() }}
         <hr>
-        hobbies: {{ hobbies[1] }} <br>
-        <hr>
-        perfil Nome: {{ perfil.nome }} <br>
-        perfil idade: {{ perfil.idade }} <br>
-        perfil cursos: {{ perfil.cursos[0].nome }} {{ perfil.cursos[0].cargaHoraria }}
-
+        dividir: {{ dividir() }}
     </div>
 
     <script>
@@ -31,32 +26,23 @@
             // # para selecionar via id
             // . para via classe        
             el: '#app', // elemento que o vue vai selecionar e usar, elemento pai
-            data: {
-                // data guarda atributos reativos
-                // só posso usar essas variveis se estiverem no data
-                mensagem: 'Hello World Vue', // string
-                valorTotal: 1587,
-                logado: false,
-                hobbies: [
-                    'Dormir', 'Ler', 'Correr'
-                ],
-                perfil: {
-                    nome: 'Jota Santos',
-                    idade: 28,
-                    cursos: [
-                        {
-                            nome: 'Laravel',
-                            cargaHoraria: 30
-                        },
-                        {
-                            nome: 'Bancos de dados',
-                            cargaHoraria: 40
-                        },
-                        {
-                            nome: 'Vue',
-                            cargaHoraria: 50
-                        },
-                    ]
+            data: {},
+            methods: {
+                // convencional
+                somar: function() {
+                    return 4 + 47;
+                },
+                subtrair: function() {
+                    // anonima
+                    return 5 - 1;
+                },
+                // arrow function
+                multiplicar: () => {
+                    return 4 * 2;
+                },
+                // forma enxuta
+                dividir() {
+                    return 4 / 2;
                 }
             }
         }
