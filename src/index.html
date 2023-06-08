@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,97 +8,70 @@
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="js/vue.js"></script>
     <style>
-        .vermelho {
-            background-color: red;
-        }
+      .vermelho {
+        background-color: red;
+      }
 
-        .azul {
-            background-color: blue;
-        }
+      .azul {
+        background-color: blue;
+      }
 
-        .verde {
-            background-color: green;
-        }
+      .verde {
+        background-color: green;
+      }
 
-        .branco {
-            background-color: snow;
-        }
+      .branco {
+        background-color: snow;
+      }
 
-        .negrito {
-            font: bold;
-        }
+      .negrito {
+        font: bold;
+      }
 
-        .borda {
-            border: 1px solid;
-        }
+      .borda {
+        border: 1px solid;
+      }
 
-        .div-principal {
-            width: 200px;
-            height: 200px;
-        }
+      .div-principal {
+        width: 200px;
+        height: 200px;
+      }
 
-        .div-comum {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-        }
+      .div-comum {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
     <div id="app">
-
-
-        <!-- aprendendeo v-if else-->
-        <label for="idade">Idade</label>
-        <input @blur="setIdade()" type="number" id="inputIdade"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus: ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        {{ idade }}
-
-        <p v-if="idade > 18">Maior</p>
-        <p v-else>Menor</p>
-
-        <label for="Nota">Nota</label>
-        <input 
-            class="border bg-slate-100" 
-            placeholder="Nota"
-             @blur="setNota()" 
-             type="text" 
-             id="inputNota">
-        
-        <p v-if="nota == '' ">Informe a nota</p>
-        <p v-else-if="nota >= 7 && nota <= 10">Aprovado</p>
-        <p v-else-if="nota >= 0 && nota <= 7">Reprovado</p>
-        <p v-else="">Nota invalida</p>
-    
-    
+      <div>
+        <h3>Exemplo tootilp</h3>
+        <p
+          @mouseover="exibirTextoDeAjuda = true"
+          @mouseout="exibirTextoDeAjuda = false"
+        >
+          Exibir ajuda
+        </p>
+        <div v-show="exibirTextoDeAjuda">Texto de ajuda</div>
+      </div>
     </div>
 
     <script>
-        let options = {
-            el: "#app",
-            data: {
-                idade: 0,
-                nota: 0,
-            },
+      let options = {
+        el: "#app",
+        data: {
+          exibirTextoDeAjuda: false,
+        },
 
-            methods: {
-                setIdade() {
-                    this.idade = inputIdade.value
-                    console.log(inputIdade.value);
-                },
-                setNota() {
-                    console.log(inputNota.value)
-                    this.nota = inputNota.value;
-                }
-            },
-        };
+        methods: {},
+      };
 
-        const vm = new Vue(options);
+      const vm = new Vue(options);
     </script>
-</body>
-
+  </body>
 </html>
