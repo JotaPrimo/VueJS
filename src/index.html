@@ -11,60 +11,43 @@
         .vermelho {
             color: red;
         }
+
+        .azul {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .negrito {
+            font: bold;
+        }
+
     </style>
 </head>
 
 <body>
-    <!-- div pai contendo todos os elementos -->
-    <div id="app">
-        <!-- classes são encadeadas -->
-        <!-- posso usar apenas : não v-bind interio -->
-        <!-- BIND EM ATRIBUTOS EXIGE V-BIND -->
-        <a :href="site">Link</a> <br><br>
-        <input type="text" :placeholder="placeholder">
-        <br>
-        <br>
-        <input type="checkbox" :checked="checked">
-        <p :class="corVermelha"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iste. Eaque iure dolor laborum
-            inventore dolorum possimus soluta necessitatibus exercitationem maxime nam amet eius ducimus expedita
-            molestias nesciunt, reiciendis accusantium.
-        </p>
+
+    <div id="app">      
+        <!-- v-bind é para atributos de classes html-->
+        {{ 2 + 2 }} <br><br>
+        tamanho do texot {{ msg.length }}<br><br>
+        <!--ternario-->
+        <input type="text" :class="teste ? 'green' : estilo" :value="msg">
     </div>
 
     <script>
         let options = {
-            // # para selecionar via id
-            // . para via classe        
-            el: '#app', // elemento que o vue vai selecionar e usar, elemento pai
+
+            el: '#app',
             data: {
-               site: 'https://www.uol.com.br/',
-               texto: 'Aprendendo Vue De Vez',
-               corVermelha: 'vermelho',
-               placeholder: 'Meu placeholde com v-bind',
-               checked: true,
+                msg: 'minha sdasdasdasd mensagem',
+                estilo: 'azul',
+                teste: false
             },
-            // para acessar as propriedades devo usar this
             methods: {
-                // convencional
-                // this faz refeencia a instancia do objetio vue
-                somar: function () {
-                    return this.n1 + this.n2;
-                },
-                subtrair: function () {
-                    // anonima
-                    return this.n2 - this.n1;
-                },
-                // arrow function
-                // não posso usar o this
-                // por causa do contexto lexico
-                // devo evitar arrow functions 
-                multiplicar: () => {
-                    return this.n1 * this.n2;
-                },
-                // forma enxuta
-                dividir() {
-                    return 4 / 2;
-                }
+
             }
         }
 
