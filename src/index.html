@@ -17,13 +17,15 @@
 <body>
     <!-- div pai contendo todos os elementos -->
     <div id="app">
+        <!-- classes são encadeadas -->
+        <!-- posso usar apenas : não v-bind interio -->
         <!-- BIND EM ATRIBUTOS EXIGE V-BIND -->
-        <a v-bind:href="site">Link</a> <br><br>
-        <input type="text" v-bind:placeholder="placeholder">
+        <a :href="site">Link</a> <br><br>
+        <input type="text" :placeholder="placeholder">
         <br>
         <br>
-        <input type="checkbox" v-bind:checked="checked">
-        <p v-bind:class="corVermelha"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iste. Eaque iure dolor laborum
+        <input type="checkbox" :checked="checked">
+        <p :class="corVermelha"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iste. Eaque iure dolor laborum
             inventore dolorum possimus soluta necessitatibus exercitationem maxime nam amet eius ducimus expedita
             molestias nesciunt, reiciendis accusantium.
         </p>
