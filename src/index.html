@@ -29,9 +29,10 @@
 
 <body>
     <!-- sintaxe suggar de v-on: use @ -->
+    <!-- pegando dados do evento, usar $event-->
     <div id="app">   
         <input type="text" @keyup="imprimirTexto('Teste', 1, opt)"> 
-        <button @click="msgAlerta()">Alert</button>  
+        <button @click="msgAlerta($event)">Alert</button>  
     </div>
 
     <script>
@@ -47,7 +48,8 @@
                     console.log(n);
                     console.log(opt)
                 },
-                msgAlerta() {
+                msgAlerta(e) {
+                    console.log(e)
                     alert('MSG alert');
                 }
             }
