@@ -26,19 +26,26 @@
             // # para selecionar via id
             // . para via classe        
             el: '#app', // elemento que o vue vai selecionar e usar, elemento pai
-            data: {},
+            data: {
+                n1: 10,
+                n2: 5
+            },
+            // para acessar as propriedades devo usar this
             methods: {
                 // convencional
+                // this faz refeencia a instancia do objetio vue
                 somar: function() {
-                    return 4 + 47;
+                    return this.n1 + this.n2;
                 },
                 subtrair: function() {
                     // anonima
-                    return 5 - 1;
+                    return this.n2 - this.n1;
                 },
                 // arrow function
+                // não posso usar o this
+                // por causa do contexto lexico
                 multiplicar: () => {
-                    return 4 * 2;
+                    return this.n1 * this.n2;
                 },
                 // forma enxuta
                 dividir() {
