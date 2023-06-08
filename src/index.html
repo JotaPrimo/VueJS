@@ -6,19 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Básico</title>
-    <script src="vue.js"></script>
+    <script src="js/vue.js"></script>
+    <style>
+        .vermelho {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
     <!-- div pai contendo todos os elementos -->
     <div id="app">
-        Somar: {{ somar() }} <br>
-        <hr>
-        subtrair: {{ subtrair() }}
-        <hr>
-        multiplicar: {{ multiplicar() }}
-        <hr>
-        dividir: {{ dividir() }}
+        <!-- BIND EM ATRIBUTOS EXIGE V-BIND -->
+        <a v-bind:href="site">Link</a> <br><br>
+        <input type="text" v-bind:placeholder="placeholder">
+        <br>
+        <br>
+        <input type="checkbox" v-bind:checked="checked">
+        <p v-bind:class="corVermelha"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iste. Eaque iure dolor laborum
+            inventore dolorum possimus soluta necessitatibus exercitationem maxime nam amet eius ducimus expedita
+            molestias nesciunt, reiciendis accusantium.
+        </p>
     </div>
 
     <script>
@@ -27,17 +35,20 @@
             // . para via classe        
             el: '#app', // elemento que o vue vai selecionar e usar, elemento pai
             data: {
-                n1: 10,
-                n2: 5
+               site: 'https://www.uol.com.br/',
+               texto: 'Aprendendo Vue De Vez',
+               corVermelha: 'vermelho',
+               placeholder: 'Meu placeholde com v-bind',
+               checked: true,
             },
             // para acessar as propriedades devo usar this
             methods: {
                 // convencional
                 // this faz refeencia a instancia do objetio vue
-                somar: function() {
+                somar: function () {
                     return this.n1 + this.n2;
                 },
-                subtrair: function() {
+                subtrair: function () {
                     // anonima
                     return this.n2 - this.n1;
                 },
