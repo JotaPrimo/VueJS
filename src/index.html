@@ -2,61 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Básico</title>
     <script src="js/vue.js"></script>
     <style>
         .vermelho {
-            color: red;
+            background-color: red;
         }
 
         .azul {
             background-color: blue;
         }
 
-        .green {
+        .verde {
             background-color: green;
+        }
+
+        .branco {
+            background-color: snow;
         }
 
         .negrito {
             font: bold;
         }
 
+        .borda {
+            border: 1px solid;
+        }
+
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+
+        .div-comum {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
     </style>
 </head>
 
 <body>
     <!-- sintaxe suggar de v-on: use @ -->
     <!-- pegando dados do evento, usar $event-->
-    <div id="app">   
-        <input type="text" @keyup="imprimirTexto('Teste', 1, opt)"> 
-        <button @click="msgAlerta($event)">Alert</button>  
+    <div id="app">
+        <button @click="setarBorda()">Adicionar Borda</button>
+        <div class="borda div-principal" :class="cor">Cor: {{ cor }}</div>
+        <hr />
+        <div class="div borda div-comum" @click="mudarCor('verde')"></div>
+
+        <div @mouseout="mudarCor('vermelho')" @mouseover="mudarCor('azul')" class="div borda div-comum"></div>
+        <div @mousemove="coordenadas($event)" class="div borda div-comum"></div>
     </div>
 
     <script>
         let options = {
-
-            el: '#app',
-            data: {   
-                opt: true            
+            el: "#app",
+            data: {
+                cor: "branco",
             },
+
             methods: {
-                imprimirTexto(t, n, opt) {
-                    console.log(t);
-                    console.log(n);
-                    console.log(opt)
+                mudarCor(c) {
+                    this.cor = c;
                 },
-                msgAlerta(e) {
-                    console.log(e)
-                    alert('MSG alert');
+                coordenadas(event) {
+                    console.log(event)
                 }
-            }
-        }
+            },
+        };
 
         const vm = new Vue(options);
-
     </script>
 </body>
 
